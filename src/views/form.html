@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="sp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Solicitud de permisos</title>
+    <link rel='stylesheet' href='../css/styles.css?v=<?php echo(rand()); ?>'>
+    <link rel="stylesheet" href='../css/normalize.css'>
+    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type='text/javascript'>
+        src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <img src="https://i.ibb.co/Y7QQn7k/ENCABEZADO.jpg" alt="ENCABEZADO">
+
+</head>
+
+
+<body>
+
+    <script>
+        $('document').ready(function() {
+
+            var now = new Date();
+
+            var day = ("0" + now.getDate()).slice(-2);
+            var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+            var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+            $("#fecha_solicitud").val(today);
+
+            $("#validar").click(function() {
+
+                /*Validación de campos de información personal----------------------------------------*/
+
+                if ($("#nombre_completo").val().length < 1) {
+                    alert("El nombre completo es un campo obligatorio");
+                    return false;
+                }
+
+                if ($("#cedula").val().length < 1) {
+                    alert("La cédula es un campo obligatorio");
+                    return false;
+                }
+
+                if ($("#correo_electronico").val().length < 1) {
+                    alert("El correo electronico es un campo obligatorio");
+                }
+
+                if ($("#jefe_inmediato").val() === "0") {
+                    alert("Por favor seleccione su Jefe inmediato en la lista");
+                    return false;
+                }
+
+                /*Validación información del permiso -----------------------------------------------------*/
+
+                if ($("#tipo_de_permiso").val() === "0") {
+                    alert("Por favor seleccione el tipo de permiso");
+                    return false;
+                }
+                /*Validación de campos de tabla de reposición----------------------------------------------*/
+                if($("#tipo_de_permiso").val() === "Diligencia personal"){                
+                    if ($("#fecha_reposicion1").val().length < 1) {
+                        alert("Diligencie el campo de reposición");
+                        return false;
+                    } else {
+                        if ($("#fecha_reposicion2").val().length < 1) {
+                            $("#reposicion").val("Fecha de reposición: " + $("#fecha_reposicion1").val() + "  hora inicio:" + $("#inicio_reposicion1").val() + "  Hora fin: " + $("#fin_reposicion1").val() + "  Actividades: " + $("#actividade1").val() + " Total horas: " + $("#total_hora1").val());
+                        } else {
+                            if ($("#fecha_reposicion3").val().length < 1) {
+                                $("#reposicion").val('=CONCATENAR("Fecha de reposición: ' + $('#fecha_reposicion1').val() + '  hora inicio:' + $('#inicio_reposicion1').val() + '  Hora fin: ' + $('#fin_reposicion1').val() + ' Actividades: ' + $('#actividade1').val() + ' Total horas: ' + $('#total_hora1').val() +
+                                    '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion2').val() + '  hora inicio: ' + $('#inicio_reposicion2').val() + '  Hora fin: ' + $('#fin_reposicion2').val() + '  Actividades: ' + $('#actividade2').val() + ' Total horas: ' + $('#total_hora2').val() + '")');
+                            } else {
+                                if ($("#fecha_reposicion4").val().length < 1) {
+                                    $("#reposicion").val('=CONCATENAR("Fecha de reposición: ' + $('#fecha_reposicion1').val() + '  hora inicio:' + $('#inicio_reposicion1').val() + '  Hora fin: ' + $('#fin_reposicion1').val() + ' Actividades: ' + $('#actividade1').val() + ' Total horas: ' + $('#total_hora1').val() +
+                                        '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion2').val() + '  hora inicio: ' + $('#inicio_reposicion2').val() + '  Hora fin: ' + $('#fin_reposicion2').val() + '  Actividades: ' + $('#actividade2').val() + ' Total horas: ' + $('#total_hora2').val() +
+                                        '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion3').val() + '  hora inicio: ' + $('#inicio_reposicion3').val() + '  Hora fin: ' + $('#fin_reposicion3').val() + '  Actividades: ' + $('#actividade3').val() + ' Total horas: ' + $('#total_hora3').val() + '")');
+                                } else {
+                                    if ($("#fecha_reposicion5").val().length < 1) {
+                                        $("#reposicion").val('=CONCATENAR("Fecha de reposición: ' + $('#fecha_reposicion1').val() + '  hora inicio:' + $('#inicio_reposicion1').val() + '  Hora fin: ' + $('#fin_reposicion1').val() + ' Actividades: ' + $('#actividade1').val() + ' Total horas: ' + $('#total_hora1').val() +
+                                            '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion2').val() + '  hora inicio: ' + $('#inicio_reposicion2').val() + '  Hora fin: ' + $('#fin_reposicion2').val() + '  Actividades: ' + $('#actividade2').val() + ' Total horas: ' + $('#total_hora2').val() +
+                                            '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion3').val() + '  hora inicio: ' + $('#inicio_reposicion3').val() + '  Hora fin: ' + $('#fin_reposicion3').val() + '  Actividades: ' + $('#actividade3').val() + ' Total horas: ' + $('#total_hora3').val() +
+                                            '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion4').val() + '  hora inicio: ' + $('#inicio_reposicion4').val() + '  Hora fin: ' + $('#fin_reposicion4').val() + '  Actividades: ' + $('#actividade4').val() + ' Total horas: ' + $('#total_hora4').val() + '")');
+                                    } else {
+                                        if ($("#fecha_reposicion6").val().length < 1) {
+                                            $("#reposicion").val('=CONCATENAR("Fecha de reposición: ' + $('#fecha_reposicion1').val() + '  hora inicio:' + $('#inicio_reposicion1').val() + '  Hora fin: ' + $('#fin_reposicion1').val() + ' Actividades: ' + $('#actividade1').val() + ' Total horas: ' + $('#total_hora1').val() +
+                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion2').val() + '  hora inicio: ' + $('#inicio_reposicion2').val() + '  Hora fin: ' + $('#fin_reposicion2').val() + '  Actividades: ' + $('#actividade2').val() + ' Total horas: ' + $('#total_hora2').val() +
+                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion3').val() + '  hora inicio: ' + $('#inicio_reposicion3').val() + '  Hora fin: ' + $('#fin_reposicion3').val() + '  Actividades: ' + $('#actividade3').val() + ' Total horas: ' + $('#total_hora3').val() +
+                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion4').val() + '  hora inicio: ' + $('#inicio_reposicion4').val() + '  Hora fin: ' + $('#fin_reposicion4').val() + '  Actividades: ' + $('#actividade4').val() + ' Total horas: ' + $('#total_hora4').val() +
+                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion5').val() + '  hora inicio: ' + $('#inicio_reposicion5').val() + '  Hora fin: ' + $('#fin_reposicion5').val() + '  Actividades: ' + $('#actividade5').val() + ' Total horas: ' + $('#total_hora5').val() + '")');
+                                        } else {
+                                            if ($("#fecha_reposicion7").val().length < 1) {
+                                                $("#reposicion").val('=CONCATENAR("Fecha de reposición: ' + $('#fecha_reposicion1').val() + '  hora inicio:' + $('#inicio_reposicion1').val() + '  Hora fin: ' + $('#fin_reposicion1').val() + ' Actividades: ' + $('#actividade1').val() + ' Total horas: ' + $('#total_hora1').val() +
+                                                    '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion2').val() + '  hora inicio: ' + $('#inicio_reposicion2').val() + '  Hora fin: ' + $('#fin_reposicion2').val() + '  Actividades: ' + $('#actividade2').val() + ' Total horas: ' + $('#total_hora2').val() +
+                                                    '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion3').val() + '  hora inicio: ' + $('#inicio_reposicion3').val() + '  Hora fin: ' + $('#fin_reposicion3').val() + '  Actividades: ' + $('#actividade3').val() + ' Total horas: ' + $('#total_hora3').val() +
+                                                    '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion4').val() + '  hora inicio: ' + $('#inicio_reposicion4').val() + '  Hora fin: ' + $('#fin_reposicion4').val() + '  Actividades: ' + $('#actividade4').val() + ' Total horas: ' + $('#total_hora4').val() +
+                                                    '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion5').val() + '  hora inicio: ' + $('#inicio_reposicion5').val() + '  Hora fin: ' + $('#fin_reposicion5').val() + '  Actividades: ' + $('#actividade5').val() + ' Total horas: ' + $('#total_hora5').val() +
+                                                    '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion6').val() + '  hora inicio: ' + $('#inicio_reposicion6').val() + '  Hora fin: ' + $('#fin_reposicion6').val() + '  Actividades: ' + $('#actividade6').val() + ' Total horas: ' + $('#total_hora6').val() + '")');
+                                            } else {
+                                                if ($("#fecha_reposicion8").val().length < 1) {
+                                                    $("#reposicion").val('=CONCATENAR("Fecha de reposición: ' + $('#fecha_reposicion1').val() + '  hora inicio:' + $('#inicio_reposicion1').val() + '  Hora fin: ' + $('#fin_reposicion1').val() + ' Actividades: ' + $('#actividade1').val() + ' Total horas: ' + $('#total_hora1').val() +
+                                                        '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion2').val() + '  hora inicio: ' + $('#inicio_reposicion2').val() + '  Hora fin: ' + $('#fin_reposicion2').val() + '  Actividades: ' + $('#actividade2').val() + ' Total horas: ' + $('#total_hora2').val() +
+                                                        '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion3').val() + '  hora inicio: ' + $('#inicio_reposicion3').val() + '  Hora fin: ' + $('#fin_reposicion3').val() + '  Actividades: ' + $('#actividade3').val() + ' Total horas: ' + $('#total_hora3').val() +
+                                                        '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion4').val() + '  hora inicio: ' + $('#inicio_reposicion4').val() + '  Hora fin: ' + $('#fin_reposicion4').val() + '  Actividades: ' + $('#actividade4').val() + ' Total horas: ' + $('#total_hora4').val() +
+                                                        '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion5').val() + '  hora inicio: ' + $('#inicio_reposicion5').val() + '  Hora fin: ' + $('#fin_reposicion5').val() + '  Actividades: ' + $('#actividade5').val() + ' Total horas: ' + $('#total_hora5').val() +
+                                                        '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion6').val() + '  hora inicio: ' + $('#inicio_reposicion6').val() + '  Hora fin: ' + $('#fin_reposicion6').val() + '  Actividades: ' + $('#actividade6').val() + ' Total horas: ' + $('#total_hora6').val() +
+                                                        '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion7').val() + '  hora inicio: ' + $('#inicio_reposicion7').val() + '  Hora fin: ' + $('#fin_reposicion7').val() + '  Actividades: ' + $('#actividade7').val() + ' Total horas: ' + $('#total_hora7').val() + '")');
+                                                } else {
+                                                    if ($("#fecha_reposicion9").val().length < 1) {
+                                                        $("#reposicion").val('=CONCATENAR("Fecha de reposición: ' + $('#fecha_reposicion1').val() + '  hora inicio:' + $('#inicio_reposicion1').val() + '  Hora fin: ' + $('#fin_reposicion1').val() + ' Actividades: ' + $('#actividade1').val() + ' Total horas: ' + $('#total_hora1').val() +
+                                                            '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion2').val() + '  hora inicio: ' + $('#inicio_reposicion2').val() + '  Hora fin: ' + $('#fin_reposicion2').val() + '  Actividades: ' + $('#actividade2').val() + ' Total horas: ' + $('#total_hora2').val() +
+                                                            '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion3').val() + '  hora inicio: ' + $('#inicio_reposicion3').val() + '  Hora fin: ' + $('#fin_reposicion3').val() + '  Actividades: ' + $('#actividade3').val() + ' Total horas: ' + $('#total_hora3').val() +
+                                                            '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion4').val() + '  hora inicio: ' + $('#inicio_reposicion4').val() + '  Hora fin: ' + $('#fin_reposicion4').val() + '  Actividades: ' + $('#actividade4').val() + ' Total horas: ' + $('#total_hora4').val() +
+                                                            '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion5').val() + '  hora inicio: ' + $('#inicio_reposicion5').val() + '  Hora fin: ' + $('#fin_reposicion5').val() + '  Actividades: ' + $('#actividade5').val() + ' Total horas: ' + $('#total_hora5').val() +
+                                                            '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion6').val() + '  hora inicio: ' + $('#inicio_reposicion6').val() + '  Hora fin: ' + $('#fin_reposicion6').val() + '  Actividades: ' + $('#actividade6').val() + ' Total horas: ' + $('#total_hora6').val() +
+                                                            '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion7').val() + '  hora inicio: ' + $('#inicio_reposicion7').val() + '  Hora fin: ' + $('#fin_reposicion7').val() + '  Actividades: ' + $('#actividade7').val() + ' Total horas: ' + $('#total_hora7').val() +
+                                                            '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion8').val() + '  hora inicio: ' + $('#inicio_reposicion8').val() + '  Hora fin: ' + $('#fin_reposicion8').val() + '  Actividades: ' + $('#actividade8').val() + ' Total horas: ' + $('#total_hora8').val() + '")');
+                                                    } else {
+                                                        if ($("#fecha_reposicion10").val().length < 1) {
+                                                            $("#reposicion").val('=CONCATENAR("Fecha de reposición: ' + $('#fecha_reposicion1').val() + '  hora inicio:' + $('#inicio_reposicion1').val() + '  Hora fin: ' + $('#fin_reposicion1').val() + ' Actividades: ' + $('#actividade1').val() + ' Total horas: ' + $('#total_hora1').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion2').val() + '  hora inicio: ' + $('#inicio_reposicion2').val() + '  Hora fin: ' + $('#fin_reposicion2').val() + '  Actividades: ' + $('#actividade2').val() + ' Total horas: ' + $('#total_hora2').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion3').val() + '  hora inicio: ' + $('#inicio_reposicion3').val() + '  Hora fin: ' + $('#fin_reposicion3').val() + '  Actividades: ' + $('#actividade3').val() + ' Total horas: ' + $('#total_hora3').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion4').val() + '  hora inicio: ' + $('#inicio_reposicion4').val() + '  Hora fin: ' + $('#fin_reposicion4').val() + '  Actividades: ' + $('#actividade4').val() + ' Total horas: ' + $('#total_hora4').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion5').val() + '  hora inicio: ' + $('#inicio_reposicion5').val() + '  Hora fin: ' + $('#fin_reposicion5').val() + '  Actividades: ' + $('#actividade5').val() + ' Total horas: ' + $('#total_hora5').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion6').val() + '  hora inicio: ' + $('#inicio_reposicion6').val() + '  Hora fin: ' + $('#fin_reposicion6').val() + '  Actividades: ' + $('#actividade6').val() + ' Total horas: ' + $('#total_hora6').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion7').val() + '  hora inicio: ' + $('#inicio_reposicion7').val() + '  Hora fin: ' + $('#fin_reposicion7').val() + '  Actividades: ' + $('#actividade7').val() + ' Total horas: ' + $('#total_hora7').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion8').val() + '  hora inicio: ' + $('#inicio_reposicion8').val() + '  Hora fin: ' + $('#fin_reposicion8').val() + '  Actividades: ' + $('#actividade8').val() + ' Total horas: ' + $('#total_hora8').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion9').val() + '  hora inicio: ' + $('#inicio_reposicion9').val() + '  Hora fin: ' + $('#fin_reposicion9').val() + '  Actividades: ' + $('#actividade9').val() + ' Total horas: ' + $('#total_hora9').val() + '")');
+                                                        } else {
+                                                            $("#reposicion").val('=CONCATENAR("Fecha de reposición: ' + $('#fecha_reposicion1').val() + '  hora inicio:' + $('#inicio_reposicion1').val() + '  Hora fin: ' + $('#fin_reposicion1').val() + ' Actividades: ' + $('#actividade1').val() + ' Total horas: ' + $('#total_hora1').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion2').val() + '  hora inicio: ' + $('#inicio_reposicion2').val() + '  Hora fin: ' + $('#fin_reposicion2').val() + '  Actividades: ' + $('#actividade2').val() + ' Total horas: ' + $('#total_hora2').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion3').val() + '  hora inicio: ' + $('#inicio_reposicion3').val() + '  Hora fin: ' + $('#fin_reposicion3').val() + '  Actividades: ' + $('#actividade3').val() + ' Total horas: ' + $('#total_hora3').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion4').val() + '  hora inicio: ' + $('#inicio_reposicion4').val() + '  Hora fin: ' + $('#fin_reposicion4').val() + '  Actividades: ' + $('#actividade4').val() + ' Total horas: ' + $('#total_hora4').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion5').val() + '  hora inicio: ' + $('#inicio_reposicion5').val() + '  Hora fin: ' + $('#fin_reposicion5').val() + '  Actividades: ' + $('#actividade5').val() + ' Total horas: ' + $('#total_hora5').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion6').val() + '  hora inicio: ' + $('#inicio_reposicion6').val() + '  Hora fin: ' + $('#fin_reposicion6').val() + '  Actividades: ' + $('#actividade6').val() + ' Total horas: ' + $('#total_hora6').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion7').val() + '  hora inicio: ' + $('#inicio_reposicion7').val() + '  Hora fin: ' + $('#fin_reposicion7').val() + '  Actividades: ' + $('#actividade7').val() + ' Total horas: ' + $('#total_hora7').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion8').val() + '  hora inicio: ' + $('#inicio_reposicion8').val() + '  Hora fin: ' + $('#fin_reposicion8').val() + '  Actividades: ' + $('#actividade8').val() + ' Total horas: ' + $('#total_hora8').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion9').val() + '  hora inicio: ' + $('#inicio_reposicion9').val() + '  Hora fin: ' + $('#fin_reposicion9').val() + '  Actividades: ' + $('#actividade9').val() + ' Total horas: ' + $('#total_hora9').val() +
+                                                                '";CARACTER(10);"' + ' Fecha de reposición: ' + $('#fecha_reposicion10').val() + '  hora inicio: ' + $('#inicio_reposicion10').val() + '  Hora fin: ' + $('#fin_reposicion10').val() + '  Actividades: ' + $('#actividade10').val() + ' Total horas: ' + $('#total_hora10').val() + '")');
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                /*Validación del total de horas con horas de reposición------------------------------------*/
+                var tot = Number($("#total").val());
+                var totrep1 = Number($("#total_hora1").val());
+                var totrep2 = Number($("#total_hora2").val());
+                var totrep3 = Number($("#total_hora3").val());
+                var totrep4 = Number($("#total_hora4").val());
+                var totrep5 = Number($("#total_hora5").val());
+                var totrep6 = Number($("#total_hora6").val());
+                var totrep7 = Number($("#total_hora7").val());
+                var totrep8 = Number($("#total_hora8").val());
+                var totrep9 = Number($("#total_hora9").val());
+                var totrep10 = Number($("#total_hora10").val());
+
+                var sumatot = totrep1 + totrep2 + totrep3 + totrep4 + totrep5 + totrep6 + totrep7 + totrep8 + totrep9 + totrep10;
+
+                console.log(sumatot);
+
+                if (tot == sumatot) {
+                    return true;
+                } else {
+                    alert("El total de horas de permiso no concuerda con el total de horas a compensar" + sumatot);
+
+                    return false;
+                }
+                }
+
+            });
+        });
+    </script>
+
+
+    <form method="POST" action="/form" class="form fondo" id="form">
+        <input type="text" name="fecha_solicitud" id="fecha_solicitud" style="visibility: hidden;" value="=hoy()">
+        <div>
+            <fieldset class="normal contenedor seccion">
+                <legend>Informacion personal</legend>
+                <label for="nombre_completo">Nombre Completo</label>
+                <input type="text" placeholder='Nombre completo' name='nombre_completo' id="nombre_completo" autofocus="autofocus">
+                <label for="cedula">Cedula</label>
+                <input type="text" placeholder='Cedula' name='cedula' id="cedula">
+                <label for="correo_electronico">Correo electronico</label>
+                <input type="text" placeholder='Correo Electronico' name='correo_electronico' id="correo_electronico">
+                <label for="jefe_inmediato">jefe_inmediato</label>
+                <select name="jefe_inmediato" id="jefe_inmediato">
+                        <option value="0">------ Seleccione --------</option>
+                        <option value="andresardila@equiposylaboratorio.com">Andrés Ardila</option>
+                        <option value="angievanegas@equiposylaboratorio.com">Angie Vanegas</option> 
+                        <option value="catalinagoez@equiposylaboratorio.com">Catalina Goez</option>
+                        <option value="danieldiaz@equiposylaboratorio.com">Daniel Diaz</option>
+                        <option value="dianacorrea@equiposylaboratorio.com">Diana Correa</option>
+                        <option value="isabelzuluaga@equiposylaboratorio.com">Isabel Zuluaga</option>
+                        <option value="jorgecano@equiposylaboratorio.com">Jorge Cano</option>
+                        <option value="lauramunoz@equiposylaboratorio.com">Laura Muñoz</option>
+                        <option value="laurapatino@equiposylaboratorio.com">Laura Patiño</option>
+                        <option value="contabilidad@equiposylaboratorio.com">Luisa Ochoa</option>
+                        <option value="marquezamestra@equiposylaboratorio.com">Marqueza Mestra</option>
+                        <option value="santiagodurango@equiposylaboratorio.com">Santiago Durango</option>
+                        <option value="vivianazapata@equiposylaboratorio.com">Viviana Zapata</option>
+                        <option value="mercadeo@equiposylaboratorio.com">Yeison Cano</option>
+                </select>
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="normal contenedor seccion">
+                <legend>Información del permiso</legend>
+    
+                <label for="tipo_de_permiso">Tipo de permiso</label>
+                <select name="tipo_de_permiso" id="tipo_de_permiso">
+                    <option value="0">------ Seleccione --------</option>
+                        <option value="Cita Medica">Cita Medica</option>
+                        <option value="Diligencia personal">Diligencia personal</option>
+                        <option value="Licencia remunerada">Licencia remunerada</option>
+                        <option value="Licencia no remunerada">Licencia no remunerada</option>
+                    </select>
+                <label for="Fecha_permiso">Fecha inicio del permiso</label>
+                <input type="date" placeholder='Fecha inicio del permiso' name='Fecha_permiso' id="Fecha_permiso" required>
+                <label for="Fecha_permiso">Fecha fin del permiso</label>
+                <input type="date" placeholder='Fecha fin del permiso' name='Fecha_fin_permiso' id="Fecha_fin_permiso" required>
+                <label for="descripcion">Descripción</label>
+                <input type='textarea' placeholder='Descripción' name='descripcion' id="descripcion" required>
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="normal contenedor seccion">
+                <legend>Horario del permiso</legend>
+                <label for="inicio_permiso">Inicio permiso</label>
+                <input type="time" name="inicio_permiso" id="inicio_permiso">
+                <label for="fin_permiso">Fin permiso</label>
+                <input type="time" name="fin_permiso" id="fin_permiso">
+                <label for="total">Total horas</label>
+                <input type="text" name="total" id="total">
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset class="contenido-centrado cliente seccion">
+                <legend>Horario de compensación</legend>
+
+                <div>
+                    <p>Relacione el tiempo fuera del horario laboral, en que repondrá las horas solicitadas de permiso</p>
+                    <table class="contenedor contenido-centrado-seccion">
+                        <thead>
+                            <th>Fecha</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                            <th>Actividades</th>
+                            <th>Total Horas</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha_reposicion1" id="fecha_reposicion1">
+                                </td>
+                                <td>
+                                    <input type="time" name="inicio_reposicion1" id="inicio_reposicion1">
+                                </td>
+                                <td>
+                                    <input type="time" name="fin_reposicion1" id="fin_reposicion1">
+                                </td>
+                                <td>
+                                    <input type="text" name="actividades1" id="actividade1">
+                                </td>
+                                <td>
+                                    <input type="text" name="total_horas1" id="total_hora1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha_reposicion2" id="fecha_reposicion2">
+                                </td>
+                                <td>
+                                    <input type="time" name="inicio_reposicion2" id="inicio_reposicion2">
+                                </td>
+                                <td>
+                                    <input type="time" name="fin_reposicion2" id="fin_reposicion2">
+                                </td>
+                                <td>
+                                    <input type="text" name="actividades2" id="actividade2">
+                                </td>
+                                <td>
+                                    <input type="text" name="total_horas2" id="total_hora2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha_reposicion3" id="fecha_reposicion3">
+                                </td>
+                                <td>
+                                    <input type="time" name="inicio_reposicion3" id="inicio_reposicion3">
+                                </td>
+                                <td>
+                                    <input type="time" name="fin_reposicion3" id="fin_reposicion3">
+                                </td>
+                                <td>
+                                    <input type="text" name="actividade3" id="actividade3">
+                                </td>
+                                <td>
+                                    <input type="text" name="total_horas3" id="total_hora3" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha_reposicion4" id="fecha_reposicion4">
+                                </td>
+                                <td>
+                                    <input type="time" name="inicio_reposicion4" id="inicio_reposicion4">
+                                </td>
+                                <td>
+                                    <input type="time" name="fin_reposicion4" id="fin_reposicion4">
+                                </td>
+                                <td>
+                                    <input type="text" name="actividades4" id="actividade4">
+                                </td>
+                                <td>
+                                    <input type="text" name="total_horas4" id="total_hora4" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha_reposicion5" id="fecha_reposicion5">
+                                </td>
+                                <td>
+                                    <input type="time" name="inicio_reposicion5" id="inicio_reposicion5">
+                                </td>
+                                <td>
+                                    <input type="time" name="fin_reposicion5" id="fin_reposicion5">
+                                </td>
+                                <td>
+                                    <input type="text" name="actividades5" id="actividade5">
+                                </td>
+                                <td>
+                                    <input type="text" name="total_horas5" id="total_hora5">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha_reposicion6" id="fecha_reposicion6">
+                                </td>
+                                <td>
+                                    <input type="time" name="inicio_reposicion6" id="inicio_reposicion6">
+                                </td>
+                                <td>
+                                    <input type="time" name="fin_reposicion6" id="fin_reposicion6">
+                                </td>
+                                <td>
+                                    <input type="text" name="actividades6" id="actividade6">
+                                </td>
+                                <td>
+                                    <input type="text" name="total_horas6" id="total_hora6">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha_reposicion7" id="fecha_reposicion7">
+                                </td>
+                                <td>
+                                    <input type="time" name="inicio_reposicion7" id="inicio_reposicion7">
+                                </td>
+                                <td>
+                                    <input type="time" name="fin_reposicion7" id="fin_reposicion7">
+                                </td>
+                                <td>
+                                    <input type="text" name="actividades7" id="actividade7">
+                                </td>
+                                <td>
+                                    <input type="text" name="total_horas7" id="total_hora7">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha_reposicion8" id="fecha_reposicion8">
+                                </td>
+                                <td>
+                                    <input type="time" name="inicio_reposicion8" id="inicio_reposicion8">
+                                </td>
+                                <td>
+                                    <input type="time" name="fin_reposicion8" id="fin_reposicion8">
+                                </td>
+                                <td>
+                                    <input type="text" name="actividades8" id="actividade8">
+                                </td>
+                                <td>
+                                    <input type="text" name="total_horas8" id="total_hora8">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha_reposicion9" id="fecha_reposicion9">
+                                </td>
+                                <td>
+                                    <input type="time" name="inicio_reposicion9" id="inicio_reposicion9">
+                                </td>
+                                <td>
+                                    <input type="time" name="fin_reposicion9" id="fin_reposicion9">
+                                </td>
+                                <td>
+                                    <input type="text" name="actividades9" id="actividade9">
+                                </td>
+                                <td>
+                                    <input type="text" name="total_horas9" id="total_hora9">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha_reposicion10" id="fecha_reposicion10">
+                                </td>
+                                <td>
+                                    <input type="time" name="inicio_reposicion10" id="inicio_reposicion10">
+                                </td>
+                                <td>
+                                    <input type="time" name="fin_reposicion10" id="fin_reposicion10">
+                                </td>
+                                <td>
+                                    <input type="text" name="actividades10" id="actividade10">
+                                </td>
+                                <td>
+                                    <input type="text" name="total_horas10" id="total_hora10">
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <input type="textarea" name="reposicion" id="reposicion" style="visibility: hidden;" value="">
+
+                </div>
+            </fieldset>
+        </div>
+
+        <button name="validar" class="boton boton-verde" id="validar">ENVIAR</button>
+    </form>
+
+</body>
+
+
+
+</html>
